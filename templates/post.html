@@ -11,8 +11,8 @@
 <body>
   <header class="container header">
     <div class="header__wrapper">
-      <a href="/" class="header__btn-back">
-        <svg class="header__btn-icon" width="19" height="16">
+      <a onclick="javascript:history.back(); return false;">
+        <svg class="header__btn-back" width="19" height="16">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#back"></use>
         </svg>
       </a>
@@ -28,7 +28,7 @@
     <section class="items">
       <div class="items__item item item--post">
         <div class="item__top">
-          <a href="/templates/user-feed.html" class="item__head">
+          <a href="/users/{{post[0]["poster_name"]}}" class="item__head">
             <div class="item__ava-wrap">
               <img src={{ post[0]["poster_avatar"] }} alt="" class="item__ava" width="47">
             </div>
