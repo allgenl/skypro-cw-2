@@ -41,7 +41,13 @@ def get_comments_by_post_id(post_id):
 
 def search_for_posts(query):
     """Возвращает список постов по ключевому слову"""
-    pass
+    with open(DATA, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    posts = []
+    for post in data:
+        if str(query).lower() in post["content"].lower():
+            posts.append(post)
+    return posts
 
 
 def get_post_by_pk(pk):
