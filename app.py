@@ -1,6 +1,8 @@
+import werkzeug
 from flask import Flask, render_template, request
+from werkzeug.exceptions import NotFound, InternalServerError
 from utils import get_posts_all, get_bookmarks_count, get_comments_by_post_id, get_post_by_pk, search_for_posts, get_posts_by_user
-import json
+
 
 if __name__ == '__main__':
     app = Flask(__name__)
@@ -34,9 +36,19 @@ if __name__ == '__main__':
     def user(username):
         posts = get_posts_by_user(username)
         if posts == "ValueError":
-            return "Такого пользователя не существует"
+            return "<h1>Такого пользователя не существует</h1>"
         else:
             return render_template("user-feed.html", posts=posts)
+
+
+    @app.errorhandler(werkzeug.exceptions.NotFound)
+    def handler(e):
+        return "<h1>Страница не найдена</h1>", 404
+
+    @app.errorhandler(werkzeug.exceptions.InternalServerError)
+    def handler(e):
+        return "<h1>Ошибка на стороне сервера</h1>", 505
+
 
     app.run(debug=True)
 

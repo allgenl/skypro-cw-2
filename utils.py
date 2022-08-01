@@ -19,15 +19,12 @@ def get_bookmarks_count():
 
 def get_posts_by_user(user_name):
     """Возвращает посты определенного пользователя"""
-    try:
-        with open(DATA, 'r', encoding='utf-8') as file:
+    with open(DATA, 'r', encoding='utf-8') as file:
             data = json.load(file)
-        posts = []
-        for post in data:
-            if user_name == post["poster_name"]:
-                posts.append(post)
+    posts = [post for post in data if user_name == post["poster_name"]]
+    if posts:
         return posts
-    except ValueError:
+    else:
         return "ValueError"
 
 
