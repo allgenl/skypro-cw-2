@@ -383,6 +383,12 @@ textarea {
 
 .item__counter-icon {
 	width: 26px;
+	padding-bottom: 3px;
+	margin-left: 11px
+}
+
+.item__counter-icon-likes {
+	width: 18px;
 	padding-bottom: 3px
 }
 

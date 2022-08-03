@@ -28,36 +28,38 @@
     <section class="items">
       <div class="items__item item item--post">
         <div class="item__top">
-          <a href="/users/{{post[0]["poster_name"]}}" class="item__head">
+          <a href="/users/{{ post.poster_name }}" class="item__head">
             <div class="item__ava-wrap">
-              <img src={{ post[0]["poster_avatar"] }} alt="" class="item__ava" width="47">
+              <img src={{ post.poster_avatar }} alt="" class="item__ava" width="47">
             </div>
-            <span class="item__username">{{ post[0]["poster_name"] }}</span>
+            <span class="item__username">{{ post.poster_name }}</span>
           </a>
           <button type="button" class="item__bookmark-btn">
             <img src="/static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
           </button>
         </div>
         <a href="" class="item__post-link">
-          <img src={{ post[0]["pic"] }} alt="" width="348" class="item__post-img">
+          <img src={{ post.pic }} alt="" width="348" class="item__post-img">
         </a>
         <div class="item__descr">
           <p class="item__text">
-            {{ post[0]["content"] }}
+            {{ post.content }}
           </p>
         </div>
         <div class="item__bottom">
           <div class="item__post-info">
             <p class="item__comments-counter">{{ comments_count }} комментария</p>
             <div class="item__counter">
+              <img src="/static/img/heart.png" alt="" class="item__counter-icon-likes" width="26">
+              <span class="item__counter-text">{{ post.likes_count }}</span>
               <img src="/static/img/eye.png" alt="" class="item__counter-icon" width="26">
-              <span class="item__counter-text">{{ post[0]["views_count"] }}</span>
+              <span class="item__counter-text">{{ post.views_count }}</span>
             </div>
           </div>
           <div class="item__comments">
             {% for comment in comments %}
             <p class="item__comment">
-              <b>{{comment["commenter_name"]}}:</b> {{comment["comment"]}}
+              <b>{{ comment.commenter_name }}:</b> {{ comment.comment }}
             </p>
             {% endfor %}
           </div>
